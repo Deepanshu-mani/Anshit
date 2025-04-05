@@ -28,7 +28,7 @@ export default function Home() {
           </section>
 
           <section id="about">
-            <Link />
+            {/* <Link /> */}
           </section>
           <HeroSec1 />
           <section id="products">
