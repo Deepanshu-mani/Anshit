@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
 
         {/* Left Section - Company Info */}
         <div className="md:w-1/3">
-        <Image src={logo} height={50} alt="Company Logo" />
+        <Image src={logo} height={50} alt="Company Logo" className="filter invert brightness-0" />
           {/* Address */}
           <div className="flex items-start gap-3 mt-4">
             <FaMapMarkerAlt className="text-lg text-gray-400 mt-1" />
