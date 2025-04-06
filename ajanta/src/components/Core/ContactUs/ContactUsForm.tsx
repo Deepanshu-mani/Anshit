@@ -3,7 +3,7 @@ import axios from "axios";
 import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import contactImg from "@/assets/contactUs.png";
+import contactImg from "@/assets/contactUs.jpg";
 
 interface FormData {
     firstName: string;

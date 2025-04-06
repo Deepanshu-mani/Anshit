@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-import aboutUs from "../../../assets/aboutUs.png";
+import aboutUs from "../../../assets/aboutUs.jpg";
 
 const AboutUs: React.FC = () => {
   return (

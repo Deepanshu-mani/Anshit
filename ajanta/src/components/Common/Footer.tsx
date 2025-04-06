@@ -1,23 +1,43 @@
 import React from "react";
-import { FaClock, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
-import logo from "@/assets/ACI.png"
-import Image from "next/image";
-const Footer: React.FC = () => {
+import { Link as ScrollLink } from "react-scroll";
 
+import {
+  FaClock,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope,
+} from "react-icons/fa";
+import logo from "@/assets/ACI.png";
+import Image from "next/image";
+
+
+const Footer: React.FC = () => {
   const menuItems = [
     { name: "Home", id: "home" },
     { name: "Products", id: "products" },
     { name: "About Us", id: "about" },
-    { name: "Contact Us", id: "contact" }
+    { name: "Contact Us", id: "contact" },
   ];
 
   return (
     <footer className="relative bg-[#2C252A] text-white py-12 px-10 w-full mt-auto">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-start space-y-8 md:space-y-0">
-
         {/* Left Section - Company Info */}
         <div className="md:w-1/3">
-        <Image src={logo} height={50} alt="Company Logo" className="filter invert brightness-0" />
+          <ScrollLink
+            to="home"
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="cursor-pointer inline-block"
+          >
+            <Image
+              src={logo}
+              height={50}
+              alt="Company Logo"
+              className="filter invert brightness-0"
+            />
+          </ScrollLink>
           {/* Address */}
           <div className="flex items-start gap-3 mt-4">
             <FaMapMarkerAlt className="text-lg text-gray-400 mt-1" />
@@ -43,7 +63,10 @@ const Footer: React.FC = () => {
           {/* Phone */}
           <div className="flex items-center gap-3 mt-4">
             <FaPhoneAlt className="text-lg text-gray-400" />
-            <a href="tel:+918630980579" className="text-gray-300 hover:text-white transition-all">
+            <a
+              href="tel:+918630980579"
+              className="text-gray-300 hover:text-white transition-all"
+            >
               +91 86309 80579
             </a>
           </div>
@@ -51,7 +74,10 @@ const Footer: React.FC = () => {
           {/* Email */}
           <div className="flex items-center gap-3 mt-4">
             <FaEnvelope className="text-lg text-gray-400" />
-            <a href="mailto:office@ajantacorporateindustry.com" className="text-gray-300 hover:text-white transition-all">
+            <a
+              href="mailto:office@ajantacorporateindustry.com"
+              className="text-gray-300 hover:text-white transition-all"
+            >
               office@ajantacorporateindustry.com
             </a>
           </div>
@@ -63,10 +89,18 @@ const Footer: React.FC = () => {
           <ul className="space-y-3">
             {menuItems.map((item, index) => (
               <li key={index} className="flex items-center gap-3 group">
-                <span className="text-gray-400 group-hover:text-white transition-all">+</span>
-                <a href={`#${item.id}`} className="text-gray-300 hover:text-white transition-all font-medium">
+                <span className="text-gray-400 group-hover:text-white transition-all">
+                  +
+                </span>
+                <ScrollLink
+                  to={item.id}
+                  smooth={true}
+                  duration={500}
+                  offset={-80}
+                  className="text-gray-300 hover:text-white transition-all font-medium cursor-pointer"
+                >
                   {item.name}
-                </a>
+                </ScrollLink>
               </li>
             ))}
           </ul>
@@ -88,11 +122,12 @@ const Footer: React.FC = () => {
             ></iframe>
           </div>
         </div>
-
       </div>
 
       <div className="absolute left-0 w-full z-50 py-1 bg-[#E0E0E0] text-black text-center bottom-0">
-        <p className="text-lg">&copy; {new Date().getFullYear()} All rights reserved.</p>
+        <p className="text-lg">
+          &copy; {new Date().getFullYear()} All rights reserved.
+        </p>
       </div>
     </footer>
   );

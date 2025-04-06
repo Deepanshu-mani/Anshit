@@ -31,15 +31,23 @@ const Navbar = () => {
       }`}
     >
       {/* Logo */}
-      <div className="relative w-24 h-6 sm:w-28 sm:h-8 md:w-32 md:h-10 lg:w-36 lg:h-10">
-        <Image
-          src={Logo}
-          alt="Logo"
-          fill
-          className="object-contain"
-          sizes="(max-width: 640px) 100px, (max-width: 768px) 120px, (max-width: 1024px) 140px, 160px"
-        />
-      </div>
+      <ScrollLink
+        to="home"
+        smooth={true}
+        duration={500}
+        offset={-80}
+        className="cursor-pointer"
+      >
+        <div className="relative w-24 h-6 sm:w-28 sm:h-8 md:w-32 md:h-10 lg:w-36 lg:h-10">
+          <Image
+            src={Logo}
+            alt="Logo"
+            fill
+            className="object-contain"
+            sizes="(max-width: 640px) 100px, (max-width: 768px) 120px, (max-width: 1024px) 140px, 160px"
+          />
+        </div>
+      </ScrollLink>
 
       {/* Desktop Navigation */}
       <ul className="hidden md:flex mt-2 space-x-6 sm:space-x-10 lg:space-x-16 text-gray-900 font-medium px-10">
@@ -49,6 +57,7 @@ const Navbar = () => {
               to={id}
               smooth={true}
               duration={500}
+              offset={-80}
               className="cursor-pointer hover:text-[#E21E25] transition-colors duration-300"
             >
               {name}
@@ -79,6 +88,7 @@ const Navbar = () => {
                   to={id}
                   smooth={true}
                   duration={500}
+                  offset={-80}
                   className="cursor-pointer hover:text-[#E21E25] transition-colors duration-300"
                   onClick={() => setMenuOpen(false)}
                 >
