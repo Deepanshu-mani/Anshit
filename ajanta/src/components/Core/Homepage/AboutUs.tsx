@@ -5,7 +5,7 @@ import aboutUs from "../../../assets/aboutUs.png";
 const AboutUs: React.FC = () => {
   return (
     <div>
-      <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1600px] mx-auto px-8 items-center">
+      <div className="relative grid grid-cols-1 md:grid-cols-2 max-w-[1600px] mx-auto px-8 items-center">
 
         {/* Image Section */}
         <motion.div
@@ -31,7 +31,7 @@ const AboutUs: React.FC = () => {
 
         {/* Text Section */}
         <motion.div
-          className="about-us flex flex-col justify-center p-6 relative overflow-hidden"
+          className="about-us flex lg:mr-30 flex-col justify-center p-6 relative overflow-hidden"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}

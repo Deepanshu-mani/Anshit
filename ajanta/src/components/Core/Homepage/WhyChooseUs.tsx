@@ -9,7 +9,7 @@ const WhyChooseUs: React.FC = (): JSX.Element => {
       {/* Top Divider */}
       <div className="border-t-2 border-gray-300 my-8 w-[90%] mx-auto"></div>
 
-      <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1600px] mx-auto px-8 items-center">
+      <div className="relative grid grid-cols-1 md:grid-cols-2  max-w-[1600px] mx-auto px-8 items-center">
 
         {/* Image Section */}
         <motion.div
@@ -34,7 +34,7 @@ const WhyChooseUs: React.FC = (): JSX.Element => {
 
         {/* Text Section */}
         <motion.div
-          className="choose-us flex flex-col justify-center p-6 relative overflow-hidden order-last md:order-first"
+          className="choose-us flex flex-col justify-center lg:ml-30 p-6 relative overflow-hidden order-last md:order-first"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
