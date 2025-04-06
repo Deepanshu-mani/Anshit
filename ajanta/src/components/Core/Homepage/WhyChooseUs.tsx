@@ -39,7 +39,7 @@ const WhyChooseUs: React.FC = (): JSX.Element => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <h2 className="text-3xl lg:text-6xl md:text-5xl sm:text-3xl font-extrabold text-black mb-8 relative z-10">
+          <h2 className="text-3xl lg:text-5xl md:text-4xl sm:text-3xl font-extrabold text-black mb-8 relative z-10">
             Why Choose Us?
           </h2>
 

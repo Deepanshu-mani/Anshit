@@ -96,7 +96,7 @@ function ContactUsForm() {
                             <label className="block text-gray-700 font-medium text-lg">Message</label>
                             <textarea
                                 name="message"
-                                className="w-full mt-2 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white/80 shadow-sm transition-all"
+                                className="w-full mt-2 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white/80 shadow-sm transition-all"
                                 rows={4}
                                 placeholder="Write your message here..."
                                 value={formData.message}
@@ -108,10 +108,10 @@ function ContactUsForm() {
                         {/* Custom Button */}
                         <button
                             type="submit"
-                            className="relative w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 px-6 button-rounded font-semibold text-lg transition-all duration-200 shadow-lg overflow-hidden group hover:scale-95 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="relative w-full bg-gradient-to-r from-red-500 to-red-700 text-white py-3 px-6 button-rounded font-semibold text-lg transition-all duration-200 shadow-lg overflow-hidden group hover:scale-95 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                             disabled={loading}
                         >
-                            <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800 button-rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:scale-95"></span>
+                            <span className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-800 button-rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:scale-95"></span>
                             <span className="relative">{loading ? "Sending..." : "Send Message"}</span>
                             <span className="absolute inset-0 border-4 border-transparent button-rounded animate-border-gradient"></span>
                         </button>
@@ -136,7 +136,7 @@ const InputField: React.FC<InputFieldProps> = ({ label, name, type = "text", val
         <input
             type={type}
             name={name}
-            className="w-full mt-2 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white/80 shadow-sm transition-all"
+            className="w-full mt-2 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white/80 shadow-sm transition-all"
             placeholder={`Enter your ${label.toLowerCase()}`}
             value={value}
             onChange={onChange}
