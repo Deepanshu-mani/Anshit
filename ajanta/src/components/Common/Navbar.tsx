@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { Menu, X } from "lucide-react";
-
+import Logo from "@/assets/ACI.png"; 
+import Image from "next/image";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
@@ -16,8 +17,8 @@ const Navbar = () => {
 
   const menuItems = [
     { name: "Home", id: "home" },
-    { name: "About Us", id: "about" },
     { name: "Products", id: "products" },
+    { name: "About Us", id: "about" },
     { name: "Contact Us", id: "contact" }
   ];
 
@@ -30,10 +31,14 @@ const Navbar = () => {
       }`}
     >
       {/* Logo */}
-      <div className="text-2xl font-bold text-gray-900">
-        <span className="bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-1 rounded">
-          FUTURE
-        </span>
+      <div className="relative w-24 h-6 sm:w-28 sm:h-8 md:w-32 md:h-10 lg:w-36 lg:h-10">
+        <Image
+          src={Logo}
+          alt="Logo"
+          fill
+          className="object-contain"
+          sizes="(max-width: 640px) 100px, (max-width: 768px) 120px, (max-width: 1024px) 140px, 160px"
+        />
       </div>
 
       {/* Desktop Navigation */}

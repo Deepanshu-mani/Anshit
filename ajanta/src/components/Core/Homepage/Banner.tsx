@@ -1,34 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BannerImg from "../../../assets/bannerImg.jpg";
-import GradientText from "../../animations/Banner/GradientText";
 import Image from "next/image";
-
-interface GradientTextProps {
-  colors: string[];
-  animationSpeed: number;
-  showBorder: boolean;
-  className?: string;
-}
+import logo from "@/assets/ACI.png";
 
 const Banner: React.FC = () => {
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const newScale = Math.max(0.5, 1 - scrollTop / 1000);
+      setScale(newScale);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="relative">
+      {/* Background Image */}
       <Image
         src={BannerImg}
         alt="Banner"
         className="w-full h-[50vh] md:h-[60vh] lg:h-[70vh] object-cover object-center"
       />
-      <div className="absolute inset-0 flex justify-center items-center text-4xl md:text-6xl lg:text-8xl font-bold">
-        <GradientText
-          colors={["#D6E5FF", "#B3D1FF", "#8FB8FF", "#6A9CFF", "#4D85FF"]}
-          animationSpeed={10}
-          showBorder={false}
-          className="custom-class"
+
+      {/* Animated Gradient Logo */}
+      <div className="absolute inset-0 flex justify-center items-center">
+        <div
+          className="relative w-full h-16 sm:w-full sm:h-20 md:w-full md:h-30 lg:w-full lg:h-60 transition-transform duration-300 ease-out"
+          style={{ transform: `scale(${scale})` }}
         >
-          Ajanta Corporate Industry
-        </GradientText>
+          <Image
+            src={logo}
+            alt="Logo"
+            fill
+            className="object-contain"
+          />
+        </div>
       </div>
-      <div className="border-t-2 border-gray-300 my-4 md:my-6 lg:my-8 w-3/4 mx-auto"></div>
     </div>
   );
 };

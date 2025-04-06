@@ -1,16 +1,23 @@
 import React from "react";
-import { FaClock, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa"; // Import icons
-
+import { FaClock, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import logo from "@/assets/ACI.png"
+import Image from "next/image";
 const Footer: React.FC = () => {
+
+  const menuItems = [
+    { name: "Home", id: "home" },
+    { name: "Products", id: "products" },
+    { name: "About Us", id: "about" },
+    { name: "Contact Us", id: "contact" }
+  ];
+
   return (
-    <footer className="relative bg-[#252b2c] text-white py-12 px-10 w-full mt-auto">
+    <footer className="relative bg-[#2C252A] text-white py-12 px-10 w-full mt-auto">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-start space-y-8 md:space-y-0">
 
         {/* Left Section - Company Info */}
         <div className="md:w-1/3">
-          <h1 className="text-3xl font-bold">Ajanta</h1>
-          <p className="text-gray-300 mt-2">Corporate Industry</p>
-
+        <Image src={logo} height={50} alt="Company Logo" />
           {/* Address */}
           <div className="flex items-start gap-3 mt-4">
             <FaMapMarkerAlt className="text-lg text-gray-400 mt-1" />
@@ -36,16 +43,16 @@ const Footer: React.FC = () => {
           {/* Phone */}
           <div className="flex items-center gap-3 mt-4">
             <FaPhoneAlt className="text-lg text-gray-400" />
-            <a href="tel:+919358400185" className="text-gray-300 hover:text-white transition-all">
-              +91 9358400185
+            <a href="tel:+918630980579" className="text-gray-300 hover:text-white transition-all">
+              +91 86309 80579
             </a>
           </div>
 
           {/* Email */}
           <div className="flex items-center gap-3 mt-4">
             <FaEnvelope className="text-lg text-gray-400" />
-            <a href="mailto:info@ajantabags.com" className="text-gray-300 hover:text-white transition-all">
-              info@ajantabags.com
+            <a href="mailto:office@ajantacorporateindustry.com" className="text-gray-300 hover:text-white transition-all">
+              office@ajantacorporateindustry.com
             </a>
           </div>
         </div>
@@ -54,10 +61,12 @@ const Footer: React.FC = () => {
         <div className="md:w-1/3">
           <h2 className="text-2xl font-semibold mb-4">Other Links</h2>
           <ul className="space-y-3">
-            {["Home", "Shop", "About Us", "Contact US"].map((link, index) => (
+            {menuItems.map((item, index) => (
               <li key={index} className="flex items-center gap-3 group">
                 <span className="text-gray-400 group-hover:text-white transition-all">+</span>
-                <a href="#" className="text-gray-300 hover:text-white transition-all font-medium">{link}</a>
+                <a href={`#${item.id}`} className="text-gray-300 hover:text-white transition-all font-medium">
+                  {item.name}
+                </a>
               </li>
             ))}
           </ul>
@@ -78,16 +87,15 @@ const Footer: React.FC = () => {
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-          
         </div>
-        
 
       </div>
+
       <div className="absolute left-0 w-full z-50 py-1 bg-[#E0E0E0] text-black text-center bottom-0">
         <p className="text-lg">&copy; {new Date().getFullYear()} All rights reserved.</p>
-        </div>
+      </div>
     </footer>
   );
-}
+};
 
 export default Footer;

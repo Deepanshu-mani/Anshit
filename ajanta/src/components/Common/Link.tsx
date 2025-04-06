@@ -12,12 +12,12 @@ const Link: React.FC = () => {
     {
       icon: <MdAlternateEmail />,
       label: "Email Us",
-      href: "mailto:info@ajantabags.com",
+      href: "mailto:office@ajantacorporateindustry.com",
     },
     {
       icon: <MdLocalPhone />,
       label: "Call Us",
-      href: "tel:+919358400185",
+      href: "tel:+918630980579",
     },
   ];
 

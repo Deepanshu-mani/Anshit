@@ -13,9 +13,9 @@ import productImages from "./data"
 
 // Convert productImages object into array format with categories
 const productCategories = {
-  "Bed & Bath": ["Bedsheet", "Towel", "SpaWrap"],
+  "Bed & Bath": ["Bedsheet", "Towel"],
   "Facial & Hair": ["FacialTissue", "HeadBand", "CuttingCape"],
-  Treatment: ["Panty", "WaxingStrip"],
+  Treatment: ["Panty", "WaxingStrip", "SpaWrap"],
 }
 
 const products = Object.entries(productImages).map(([name, details]) => ({
@@ -139,8 +139,8 @@ export default function ProfessionalProductShowcase() {
     <section className="relative py-16 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Our Product Catalog</h2>
-          <p className="text-lg text-gray-600 max-w-3xl">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">Our Products </h2>
+          <p className="text-lg text-gray-600 max-w-5xl">
             Browse our comprehensive range of premium disposable products designed for professional salon and spa
             environments.
           </p>
@@ -436,6 +436,7 @@ export default function ProfessionalProductShowcase() {
           </motion.div>
         )}
       </AnimatePresence>
+      
     </section>
   )
 }

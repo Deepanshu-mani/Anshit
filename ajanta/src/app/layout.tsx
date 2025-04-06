@@ -3,6 +3,9 @@ import "./globals.css";
 export const metadata = {
   title: "Ajanta",
   description: "Welcome to my awesome Next.js website.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

@@ -75,7 +75,7 @@ function ContactUsForm() {
                 }}
             />
 
-            <div className="max-w-5xl mx-auto bg-white/30 backdrop-blur-md p-8 rounded-2xl shadow-2xl mt-10 flex flex-col md:flex-row items-center border border-white/10">
+            <div className="max-w-7xl mx-auto bg-white/30 backdrop-blur-md p-8 rounded-2xl shadow-2xl mt-10 flex flex-col md:flex-row items-center border border-white/10">
                 <div className="w-full md:w-1/2 flex justify-center">
                     <Image src={contactImg} alt="Contact Us" className="w-full max-w-sm md:max-w-md rounded-3xl animate-fade-in" />
                 </div>
