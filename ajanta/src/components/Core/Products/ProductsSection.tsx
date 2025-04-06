@@ -1,22 +1,22 @@
-"use client";
+"use client"
 
-import { useState, useEffect, useCallback, useRef } from "react";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, X, Mail, Phone } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
-import productImages from "./data";
+import { useState, useEffect, useCallback, useRef } from "react"
+import Image from "next/image"
+import { motion, AnimatePresence } from "framer-motion"
+import { ChevronLeft, ChevronRight, X, Mail, Phone } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Separator } from "@/components/ui/separator"
+import { cn } from "@/lib/utils"
+import productImages from "./data"
 
 // Convert productImages object into array format with categories
 const productCategories = {
   "Bed & Bath": ["Bedsheet", "Towel"],
   "Facial & Hair": ["FacialTissue", "HeadBand", "CuttingCape"],
   Treatment: ["Panty", "WaxingStrip", "SpaWrap"],
-};
+}
 
 const products = Object.entries(productImages).map(([name, details]) => ({
   id: name,
@@ -26,153 +26,129 @@ const products = Object.entries(productImages).map(([name, details]) => ({
   gsm: details.gsm,
   colour: details.colour,
   usage: details.usage,
-  category:
-    Object.entries(productCategories).find(([_, products]) =>
-      products.includes(name)
-    )?.[0] || "Other",
-}));
+  category: Object.entries(productCategories).find(([_, products]) => products.includes(name))?.[0] || "Other",
+}))
 
 export default function ProfessionalProductShowcase() {
-  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<string>("all");
-  const [isLoading, setIsLoading] = useState(true);
-  const modalRef = useRef<HTMLDivElement>(null);
-  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<string | null>(null)
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [activeCategory, setActiveCategory] = useState<string>("all")
+  const [isLoading, setIsLoading] = useState(true)
+  const modalRef = useRef<HTMLDivElement>(null)
+  const autoplayRef = useRef<NodeJS.Timeout | null>(null)
 
-  const selectedProductData = selectedProduct
-    ? products.find((p) => p.id === selectedProduct)
-    : null;
+  const selectedProductData = selectedProduct ? products.find((p) => p.id === selectedProduct) : null
 
   const filteredProducts =
-    activeCategory === "all"
-      ? products
-      : products.filter((product) => product.category === activeCategory);
+    activeCategory === "all" ? products : products.filter((product) => product.category === activeCategory)
 
   // Simulate loading state
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 800);
+      setIsLoading(false)
+    }, 800)
 
-    return () => clearTimeout(timer);
-  }, []);
+    return () => clearTimeout(timer)
+  }, [])
 
   const handleProductClick = (productId: string) => {
-    setSelectedProduct(productId);
-    setActiveImageIndex(0);
-    setIsModalOpen(true);
-    document.body.style.overflow = "hidden";
-  };
+    setSelectedProduct(productId)
+    setActiveImageIndex(0)
+    setIsModalOpen(true)
+    document.body.style.overflow = "hidden"
+  }
 
   const closeModal = useCallback(() => {
-    setIsModalOpen(false);
-    document.body.style.overflow = "auto";
+    setIsModalOpen(false)
+    document.body.style.overflow = "auto"
 
     // Small delay before resetting selected product to allow animation to complete
     setTimeout(() => {
-      setSelectedProduct(null);
-    }, 300);
-  }, []);
+      setSelectedProduct(null)
+    }, 300)
+  }, [])
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
-      if (!isModalOpen) return;
+      if (!isModalOpen) return
 
       if (event.key === "Escape") {
-        closeModal();
+        closeModal()
       } else if (event.key === "ArrowRight" && selectedProductData) {
-        setActiveImageIndex(
-          (prev) => (prev + 1) % selectedProductData.images.length
-        );
+        setActiveImageIndex((prev) => (prev + 1) % selectedProductData.images.length)
       } else if (event.key === "ArrowLeft" && selectedProductData) {
-        setActiveImageIndex((prev) =>
-          prev === 0 ? selectedProductData.images.length - 1 : prev - 1
-        );
+        setActiveImageIndex((prev) => (prev === 0 ? selectedProductData.images.length - 1 : prev - 1))
       }
     },
-    [isModalOpen, closeModal, selectedProductData]
-  );
+    [isModalOpen, closeModal, selectedProductData],
+  )
 
   // Handle clicks outside the modal
   const handleOutsideClick = useCallback(
     (e: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-        closeModal();
+        closeModal()
       }
     },
-    [closeModal]
-  );
+    [closeModal],
+  )
 
   // Set up event listeners
   useEffect(() => {
     if (isModalOpen) {
-      document.addEventListener("keydown", handleKeyDown);
-      document.addEventListener("mousedown", handleOutsideClick);
+      document.addEventListener("keydown", handleKeyDown)
+      document.addEventListener("mousedown", handleOutsideClick)
     } else {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("keydown", handleKeyDown)
+      document.removeEventListener("mousedown", handleOutsideClick)
     }
 
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, [isModalOpen, handleKeyDown, handleOutsideClick]);
+      document.removeEventListener("keydown", handleKeyDown)
+      document.removeEventListener("mousedown", handleOutsideClick)
+    }
+  }, [isModalOpen, handleKeyDown, handleOutsideClick])
 
   // Image autoplay
   useEffect(() => {
-    if (
-      isModalOpen &&
-      selectedProductData &&
-      selectedProductData.images.length > 1
-    ) {
+    if (isModalOpen && selectedProductData && selectedProductData.images.length > 1) {
       // Clear any existing interval
       if (autoplayRef.current) {
-        clearInterval(autoplayRef.current);
+        clearInterval(autoplayRef.current)
       }
 
       // Set new interval
       autoplayRef.current = setInterval(() => {
-        setActiveImageIndex(
-          (prev) => (prev + 1) % selectedProductData.images.length
-        );
-      }, 4000);
+        setActiveImageIndex((prev) => (prev + 1) % selectedProductData.images.length)
+      }, 4000)
     }
 
     return () => {
       if (autoplayRef.current) {
-        clearInterval(autoplayRef.current);
-        autoplayRef.current = null;
+        clearInterval(autoplayRef.current)
+        autoplayRef.current = null
       }
-    };
-  }, [isModalOpen, selectedProductData, activeImageIndex]);
+    }
+  }, [isModalOpen, selectedProductData, activeImageIndex])
 
   // Get unique categories
-  const categories = ["all", ...new Set(products.map((p) => p.category))];
+  const categories = ["all", ...new Set(products.map((p) => p.category))]
 
   return (
     <section className="relative py-16 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">
-            Our Products{" "}
-          </h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">Our Products </h2>
           <p className="text-lg text-gray-600 max-w-5xl">
-            Browse our comprehensive range of premium disposable products
-            designed for professional salon and spa environments.
+            Browse our comprehensive range of premium disposable products designed for professional salon and spa
+            environments.
           </p>
         </div>
 
         {/* Category Tabs */}
-        <Tabs
-          defaultValue="all"
-          value={activeCategory}
-          onValueChange={setActiveCategory}
-          className="mb-10"
-        >
-          <div className="border-b pb-2 border-gray-200">
+        <Tabs defaultValue="all" value={activeCategory} onValueChange={setActiveCategory} className="mb-10">
+          <div className="border-b pb-2 overflow-x-auto">
             <TabsList className="bg-transparent h-auto p-0 mb-[-1px] w-auto inline-flex">
               {categories.map((category) => (
                 <TabsTrigger
@@ -180,7 +156,7 @@ export default function ProfessionalProductShowcase() {
                   value={category}
                   className={cn(
                     "py-3 px-5 rounded-none data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none data-[state=active]:bg-transparent",
-                    "text-gray-600 data-[state=active]:text-gray-900 font-medium whitespace-nowrap"
+                    "text-gray-600 data-[state=active]:text-gray-900 font-medium whitespace-nowrap",
                   )}
                 >
                   {category === "all" ? "All Products" : category}
@@ -234,10 +210,7 @@ export default function ProfessionalProductShowcase() {
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
 
                         <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <Badge
-                            variant="secondary"
-                            className="bg-white shadow-sm"
-                          >
+                          <Badge variant="secondary" className="bg-white shadow-sm">
                             View Details
                           </Badge>
                         </div>
@@ -245,17 +218,11 @@ export default function ProfessionalProductShowcase() {
 
                       <div className="p-4">
                         {/* Product name section - removed color badge completely */}
-                        <h3 className="text-lg font-medium text-gray-900">
-                          {product.name}
-                        </h3>
+                        <h3 className="text-lg font-medium text-gray-900">{product.name}</h3>
 
                         {/* Product details - removed color information */}
-                        <p className="text-gray-500 text-sm mt-1">
-                          Size: {product.size}
-                        </p>
-                        <p className="text-gray-500 text-sm mt-0.5">
-                          GSM: {product.gsm}
-                        </p>
+                        <p className="text-gray-500 text-sm mt-1">Size: {product.size}</p>
+                        <p className="text-gray-500 text-sm mt-0.5">GSM: {product.gsm}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -264,9 +231,7 @@ export default function ProfessionalProductShowcase() {
 
               {filteredProducts.length === 0 && !isLoading && (
                 <div className="text-center py-12">
-                  <p className="text-gray-500">
-                    No products found in this category.
-                  </p>
+                  <p className="text-gray-500">No products found in this category.</p>
                 </div>
               )}
             </TabsContent>
@@ -304,13 +269,8 @@ export default function ProfessionalProductShowcase() {
                     className="absolute inset-0 flex items-center justify-center p-6"
                   >
                     <Image
-                      src={
-                        selectedProductData.images[activeImageIndex] ||
-                        "/placeholder.svg"
-                      }
-                      alt={`${selectedProductData.name} - Image ${
-                        activeImageIndex + 1
-                      }`}
+                      src={selectedProductData.images[activeImageIndex] || "/placeholder.svg"}
+                      alt={`${selectedProductData.name} - Image ${activeImageIndex + 1}`}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-contain"
@@ -323,12 +283,8 @@ export default function ProfessionalProductShowcase() {
                   <>
                     <button
                       onClick={(e) => {
-                        e.stopPropagation();
-                        setActiveImageIndex((prev) =>
-                          prev === 0
-                            ? selectedProductData.images.length - 1
-                            : prev - 1
-                        );
+                        e.stopPropagation()
+                        setActiveImageIndex((prev) => (prev === 0 ? selectedProductData.images.length - 1 : prev - 1))
                       }}
                       className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 text-gray-800 p-2 rounded-full shadow-md hover:bg-white transition-colors z-10"
                       aria-label="Previous image"
@@ -337,11 +293,8 @@ export default function ProfessionalProductShowcase() {
                     </button>
                     <button
                       onClick={(e) => {
-                        e.stopPropagation();
-                        setActiveImageIndex(
-                          (prev) =>
-                            (prev + 1) % selectedProductData.images.length
-                        );
+                        e.stopPropagation()
+                        setActiveImageIndex((prev) => (prev + 1) % selectedProductData.images.length)
                       }}
                       className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 text-gray-800 p-2 rounded-full shadow-md hover:bg-white transition-colors z-10"
                       aria-label="Next image"
@@ -355,14 +308,12 @@ export default function ProfessionalProductShowcase() {
                         <button
                           key={index}
                           onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveImageIndex(index);
+                            e.stopPropagation()
+                            setActiveImageIndex(index)
                           }}
                           className={cn(
                             "w-2 h-2 rounded-full transition-all duration-300",
-                            activeImageIndex === index
-                              ? "bg-primary w-6"
-                              : "bg-gray-300 hover:bg-gray-400"
+                            activeImageIndex === index ? "bg-primary w-6" : "bg-gray-300 hover:bg-gray-400",
                           )}
                           aria-label={`View image ${index + 1}`}
                         />
@@ -374,8 +325,8 @@ export default function ProfessionalProductShowcase() {
                 {/* Close Button */}
                 <button
                   onClick={(e) => {
-                    e.stopPropagation();
-                    closeModal();
+                    e.stopPropagation()
+                    closeModal()
                   }}
                   className="absolute top-4 right-4 bg-white/90 text-gray-800 p-2 rounded-full shadow-md hover:bg-white transition-colors z-10"
                   aria-label="Close product details"
@@ -388,17 +339,12 @@ export default function ProfessionalProductShowcase() {
               <div className="w-full md:w-1/2 p-6 md:p-8 overflow-y-auto">
                 <div className="mb-6">
                   <div className="flex items-start justify-between gap-2 mb-2">
-                    <h3 className="text-2xl font-semibold text-gray-900">
-                      {selectedProductData.name}
-                    </h3>
-                    <Badge className="bg-primary/10 text-primary border-0">
-                      {selectedProductData.category}
-                    </Badge>
+                    <h3 className="text-2xl font-semibold text-gray-900">{selectedProductData.name}</h3>
+                    <Badge className="bg-primary/10 text-primary border-0">{selectedProductData.category}</Badge>
                   </div>
 
                   <p className="text-gray-500 text-sm">
-                    Product ID: {selectedProductData.id}-
-                    {Math.floor(Math.random() * 1000)}
+                    Product ID: {selectedProductData.id}-{Math.floor(Math.random() * 1000)}
                   </p>
                 </div>
 
@@ -418,53 +364,29 @@ export default function ProfessionalProductShowcase() {
                   <TabsContent value="specifications" className="pt-4">
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-                        <div className="text-sm font-medium text-gray-700">
-                          Size
-                        </div>
-                        <div className="text-sm text-gray-900">
-                          {selectedProductData.size}
-                        </div>
+                        <div className="text-sm font-medium text-gray-700">Size</div>
+                        <div className="text-sm text-gray-900">{selectedProductData.size}</div>
 
-                        <div className="text-sm font-medium text-gray-700">
-                          GSM
-                        </div>
-                        <div className="text-sm text-gray-900">
-                          {selectedProductData.gsm}
-                        </div>
+                        <div className="text-sm font-medium text-gray-700">GSM</div>
+                        <div className="text-sm text-gray-900">{selectedProductData.gsm}</div>
 
-                        <div className="text-sm font-medium text-gray-700">
-                          Color
-                        </div>
-                        <div className="text-sm text-gray-900">
-                          {selectedProductData.colour}
-                        </div>
+                        <div className="text-sm font-medium text-gray-700">Color</div>
+                        <div className="text-sm text-gray-900">{selectedProductData.colour}</div>
 
-                        <div className="text-sm font-medium text-gray-700">
-                          Material
-                        </div>
-                        <div className="text-sm text-gray-900">
-                          Premium Disposable
-                        </div>
+                        <div className="text-sm font-medium text-gray-700">Material</div>
+                        <div className="text-sm text-gray-900">Premium Disposable</div>
 
-                        <div className="text-sm font-medium text-gray-700">
-                          Packaging
-                        </div>
-                        <div className="text-sm text-gray-900">
-                          Bulk Quantity Available
-                        </div>
+                        <div className="text-sm font-medium text-gray-700">Packaging</div>
+                        <div className="text-sm text-gray-900">Bulk Quantity Available</div>
                       </div>
                     </div>
                   </TabsContent>
 
                   {/* Details tab content */}
                   <TabsContent value="details" className="pt-4">
-                    <p className="text-gray-700 mb-4">
-                      {selectedProductData.usage}
-                    </p>
+                    <p className="text-gray-700 mb-4">{selectedProductData.usage}</p>
 
-                    <h4 className="text-sm font-medium text-gray-900 mb-2">
-                      Key Features
-                    </h4>
+                    <h4 className="text-sm font-medium text-gray-900 mb-2">Key Features</h4>
                     <ul className="list-disc pl-5 text-gray-700 space-y-1 mb-4">
                       <li>Premium quality materials</li>
                       <li>Professional-grade durability</li>
@@ -472,12 +394,10 @@ export default function ProfessionalProductShowcase() {
                       <li>Consistent performance</li>
                     </ul>
 
-                    <h4 className="text-sm font-medium text-gray-900 mb-2">
-                      Applications
-                    </h4>
+                    <h4 className="text-sm font-medium text-gray-900 mb-2">Applications</h4>
                     <p className="text-gray-700">
-                      Ideal for professional salons, spas, and wellness centers.
-                      Suitable for commercial and high-volume usage.
+                      Ideal for professional salons, spas, and wellness centers. Suitable for commercial and high-volume
+                      usage.
                     </p>
                   </TabsContent>
                 </Tabs>
@@ -485,13 +405,10 @@ export default function ProfessionalProductShowcase() {
                 <Separator className="my-6" />
 
                 <div className="space-y-4">
+            
+
                   <div className="flex">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex-1"
-                      asChild
-                    >
+                    <Button variant="outline" size="sm" className="flex-1" asChild>
                       <a href="mailto:office@ajantacorporateindustry.com">
                         <Mail size={16} className="mr-2" />
                         Contact Sales
@@ -500,12 +417,9 @@ export default function ProfessionalProductShowcase() {
                   </div>
 
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="text-sm font-medium text-gray-900 mb-2">
-                      Need assistance?
-                    </h4>
+                    <h4 className="text-sm font-medium text-gray-900 mb-2">Need assistance?</h4>
                     <p className="text-sm text-gray-700 mb-3">
-                      Our product specialists are available to help with your
-                      inquiries.
+                      Our product specialists are available to help with your inquiries.
                     </p>
                     <div className="flex items-center gap-2">
                       <Phone size={16} className="text-gray-500" />
@@ -523,5 +437,6 @@ export default function ProfessionalProductShowcase() {
         )}
       </AnimatePresence>
     </section>
-  );
+  )
 }
+
