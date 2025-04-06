@@ -172,7 +172,7 @@ export default function ProfessionalProductShowcase() {
           onValueChange={setActiveCategory}
           className="mb-10"
         >
-          <div className="border-b overflow-x-auto">
+          <div className="border-b pb-2 border-gray-200">
             <TabsList className="bg-transparent h-auto p-0 mb-[-1px] w-auto inline-flex">
               {categories.map((category) => (
                 <TabsTrigger
