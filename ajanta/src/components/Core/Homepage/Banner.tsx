@@ -1,43 +1,44 @@
 import React, { useEffect, useState } from "react";
-import BannerImg from "../../../assets/bannerImg.jpg";
 import Image from "next/image";
-import logo from "@/assets/ACI.png";
+import bannerImg1 from "@/assets/banner1.png";
 
 const Banner: React.FC = () => {
-  const [scale, setScale] = useState(1);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const newScale = Math.max(0.5, 1 - scrollTop / 1000);
-      setScale(newScale);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <div className="relative">
       {/* Background Image */}
       <Image
-        src={BannerImg}
-        alt="Banner"
-        className="w-full h-[50vh] md:h-[60vh] lg:h-[70vh] object-cover object-center"
+        src={bannerImg1}
+        alt="Banner Background"
+        className="w-full h-[50vh] md:h-[70vh] lg:h-[90vh] object-cover object-center"
+        priority
       />
 
-      {/* Animated Gradient Logo */}
-      <div className="absolute inset-0 flex justify-center items-center">
-        <div
-          className="relative w-full h-16 sm:w-full sm:h-20 md:w-full md:h-30 lg:w-full lg:h-60 transition-transform duration-300 ease-out"
-          style={{ transform: `scale(${scale})` }}
-        >
-          <Image
-            src={logo}
-            alt="Logo"
-            fill
-            className="object-contain"
-          />
+      {/* Text Content */}
+      <div className="absolute inset-0 flex flex-col justify-center items-start px-4 sm:px-6 md:px-20">
+        <div>
+          <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-800 mb-4 w-full sm:w-[70%] md:w-[60%] leading-snug">
+            Empowering <br /> Hygiene & Comfort
+          </h1>
+          <p className="text-lg w-[70%] sm:text-xl md:text-2xl text-gray-700 mb-4 sm:mb-6 leading-relaxed">
+            One Disposable at a Time
+          </p>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 w-[60%] sm:w-[70%] md:w-[50%] max-w-2xl mb-6 sm:mb-8 leading-relaxed">
+            Explore premium-quality disposable products designed for salons,
+            clinics, and wellness centers.
+          </p>
+          <a
+            href="#products"
+            onClick={() => {
+              const target = document.querySelector("#products");
+              if (target) {
+                const offsetTop = target.getBoundingClientRect().top + window.scrollY - 80;
+                window.scrollTo({ top: offsetTop, behavior: "smooth" });
+              }
+            }}
+            className="bg-gray-800 text-white px-3 py-2 sm:px-5 sm:py-3 md:px-6 md:py-4 rounded-lg hover:bg-gray-700 transition inline-block text-xs sm:text-sm md:text-base"
+          >
+            Explore Our Products
+          </a>
         </div>
       </div>
     </div>

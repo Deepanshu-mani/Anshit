@@ -44,7 +44,7 @@ const WhyChooseUs: React.FC = (): JSX.Element => {
           </h2>
 
           <div className="relative z-10">
-            <p className="text-black opacity-85 lg:text-xl md:text-[18px] md:leading-[1rem] lg:leading-[1.5rem] w-full mb-4 text-justify leading-relaxed col-span-2">
+            <p className="text-black opacity-85 lg:text-xl md:text-[18px] md:leading-[1.5rem] lg:leading-[2rem] w-full mb-4 text-justify leading-relaxed col-span-2">
               We are committed to delivering top-notch quality, innovative designs, and exceptional customer service.
               Here’s why we stand out:
             </p>
