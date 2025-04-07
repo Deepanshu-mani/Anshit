@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import bannerImg1 from "@/assets/banner1.png";
-import bannerImg2 from "@/assets/banner2.png";
+import bannerImg1 from "@/assets/banner1.jpg";
+import bannerImg2 from "@/assets/banner2.jpg";
 
 const banners = [
   {
