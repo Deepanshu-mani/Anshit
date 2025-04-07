@@ -40,7 +40,7 @@ const AboutUs: React.FC = () => {
             About Us
           </h2>
 
-          <div className="relative z-10 text-black opacity-85 text-justify lg:text-xl md:text-[18px] md:leading-[1.5rem] lg:leading-[2rem leading-relaxed w-full">
+          <div className="relative z-10 text-black opacity-85 text-justify lg:text-xl md:text-[18px] md:leading-[1.5rem] lg:leading-[2rem] leading-relaxed w-full">
             Ajanta Corporate Industry has over a decade of experience in the disposable salon and hygiene product
             industry. We provide waxing strips, disposable bedsheets, towels, tissues, cutting capes, gowns, and
             headbands to salons, home service providers, retailers, and export markets. Our focus is on delivering
