@@ -71,13 +71,13 @@ const Banner: React.FC = () => {
           <Image
             src={image}
             alt="Banner Background"
-            className={`w-full h-[30vh] sm:h-[40vh] md:h-[70vh] lg:h-[90vh] object-center object-cover lg:mt-8 transition-opacity duration-700 ${
+            className={`w-full h-[25vh] sm:h-[40vh] md:h-[70vh] lg:h-[90vh] object-center object-cover lg:mt-8 transition-opacity duration-700 ${
               transitioning ? "opacity-0" : "opacity-100"
             }`}
             priority
           />
           {/* Text Content with animation */}
-          <div className="absolute inset-0 flex flex-col justify-center items-start sm:text-left px-4 sm:px-6 md:px-20 pt-10 pl-4">
+          <div className="absolute inset-0 flex flex-col justify-center items-start sm:text-left px-4 sm:px-6 md:px-20 lg:pt-10 pl-4">
             <div
               className={`w-[80%] transform transition-all duration-700 ${
                 transitioning ? "-translate-x-10 opacity-0" : "translate-x-0 opacity-100"
