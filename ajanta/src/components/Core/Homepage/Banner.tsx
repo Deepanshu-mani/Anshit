@@ -59,7 +59,7 @@ const Banner: React.FC = () => {
   };
 
   return (
-    <div className="relative mt-14 overflow-hidden">
+    <div className="relative lg:mt-10 mt-14 overflow-hidden">
       {/* Image Wrapper with slide effect */}
       <div
         className={`flex transition-transform duration-500 ease-in-out ${
@@ -71,7 +71,7 @@ const Banner: React.FC = () => {
           <Image
             src={image}
             alt="Banner Background"
-            className={`w-full h-[30vh] sm:h-[40vh] md:h-[70vh] lg:h-[90vh] object-cover object-center transition-opacity duration-700 ${
+            className={`w-full h-[30vh] sm:h-[40vh] md:h-[70vh] lg:h-[90vh] object-center transition-opacity duration-700 ${
               transitioning ? "opacity-0" : "opacity-100"
             }`}
             priority
