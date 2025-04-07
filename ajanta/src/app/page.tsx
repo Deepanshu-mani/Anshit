@@ -10,6 +10,7 @@ import WhyChooseUs from "@/components/Core/Homepage/WhyChooseUs";
 import Banner from "@/components/Core/Homepage/Banner";
 import ProductsSection from "@/components/Core/Products/ProductsSection";
 import Link from "@/components/Common/Link";
+import TopButton from "@/components/Common/topBtn";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -43,7 +44,7 @@ export default function Home() {
 
           
             <Link />
-            
+            <TopButton />
           
 
           <section id="contact">
