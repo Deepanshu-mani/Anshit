@@ -71,7 +71,7 @@ const Banner: React.FC = () => {
           <Image
             src={image}
             alt="Banner Background"
-            className={`w-full h-[30vh] sm:h-[40vh] md:h-[70vh] lg:h-[90vh] object-center transition-opacity duration-700 ${
+            className={`w-full h-[30vh] sm:h-[40vh] md:h-[70vh] lg:h-[90vh] object-center object-cover lg:mt-8 transition-opacity duration-700 ${
               transitioning ? "opacity-0" : "opacity-100"
             }`}
             priority
