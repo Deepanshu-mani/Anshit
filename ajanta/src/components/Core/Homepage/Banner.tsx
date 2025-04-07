@@ -83,7 +83,7 @@ const Banner: React.FC = () => {
                 transitioning ? "-translate-x-10 opacity-0" : "translate-x-0 opacity-100"
               }`}
             >
-              <h1 className="text-xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-800 mb-1 w-full sm:w-[70%] md:w-[60%] leading-snug">
+              <h1 className="text-lg sm:text-2xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-800 mb-1 w-full sm:w-[70%] md:w-[60%] leading-snug">
                 {title.split(" & ").map((line, index) => (
                   <React.Fragment key={index}>
                     {line}
@@ -91,7 +91,7 @@ const Banner: React.FC = () => {
                   </React.Fragment>
                 ))}
               </h1>
-              <p className="w-full sm:w-[70%] sm:text-[20px] md:text-lg lg:text-3xl text-gray-700 mb-1 sm:mb-2 leading-relaxed">
+              <p className="w-full sm:w-[70%] text-[15px] sm:text-[20px] md:text-lg lg:text-3xl text-gray-700 mb-1 sm:mb-2 leading-relaxed">
                 {subtitle}
               </p>
               <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 w-[70%] sm:w-[70%] md:w-[50%] max-w-2xl mb-2 sm:mb-8 leading-relaxed">

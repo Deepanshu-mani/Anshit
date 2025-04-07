@@ -136,11 +136,11 @@ export default function ProfessionalProductShowcase() {
   const categories = ["all", ...new Set(products.map((p) => p.category))]
 
   return (
-    <section className="relative py-16 bg-gradient-to-b from-gray-50 to-white">
+    <section className="relative py-6 lg:py-16 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12">
+        <div className="mb-6 lg:mb-12">
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">Our Products </h2>
-          <p className="text-lg text-gray-600 max-w-5xl">
+          <p className="text-sm lg:text-xl text-gray-600 max-w-5xl">
             Browse our comprehensive range of premium disposable products designed for professional salon and spa
             environments.
           </p>
