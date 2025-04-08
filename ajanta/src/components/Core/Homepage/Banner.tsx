@@ -59,7 +59,7 @@ const Banner: React.FC = () => {
   };
 
   return (
-    <div className="relative lg:mt-10 mt-14 overflow-hidden">
+    <div className="relative lg:mt-0 mt-14 overflow-hidden">
       {/* Image Wrapper with slide effect */}
       <div
         className={`flex transition-transform duration-500 ease-in-out ${
