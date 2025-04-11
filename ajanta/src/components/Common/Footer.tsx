@@ -75,10 +75,10 @@ const Footer: React.FC = () => {
           <div className="flex items-center gap-3 mt-4">
             <FaEnvelope className="text-lg text-gray-400" />
             <a
-              href="mailto:office@ajantacorporateindustry.com"
+              href="mailto:info@ajantacorporateindustry.com"
               className="text-gray-300 hover:text-white transition-all"
             >
-              office@ajantacorporateindustry.com
+              info@ajantacorporateindustry.com
             </a>
           </div>
         </div>

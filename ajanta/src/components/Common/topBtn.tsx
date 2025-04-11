@@ -3,17 +3,24 @@ import { FaArrowUp } from 'react-icons/fa';
 
 const TopButton: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const checkWindowSize = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
+    const handleScroll = () => {
+      setIsVisible(window.scrollY > 100);
+    }
     checkWindowSize();
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', checkWindowSize);
 
     return () => {
       window.removeEventListener('resize', checkWindowSize);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -23,6 +30,8 @@ const TopButton: React.FC = () => {
       behavior: 'smooth',
     });
   };
+
+  if (!isVisible) return null;
 
   return (
     <button

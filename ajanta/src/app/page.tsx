@@ -40,12 +40,9 @@ export default function Home() {
           <section id="about">
             <AboutUs />
           </section>
-         
 
-          
-            <Link />
-            <TopButton />
-          
+          <Link />
+          <TopButton />
 
           <section id="contact">
             <ContactForm />

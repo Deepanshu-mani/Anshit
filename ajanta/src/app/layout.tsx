@@ -1,11 +1,42 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Ajanta",
-  description: "Welcome to my awesome Next.js website.",
+  title: {
+    default: "Ajanta",
+    template: "%s | Ajanta",
+  },
+  description: "Explore Ajanta Corporate Industries: Delivering premium products and innovative solutions globally.",
   icons: {
     icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
+  metadataBase: new URL("https://www.ajantacorporateindustry.com"),
+  openGraph: {
+    title: "Ajanta",
+    description: "Explore Ajanta Corporate Industries: Delivering premium products and innovative solutions globally.",
+    url: "https://www.ajantacorporateindustry.com",
+    siteName: "Ajanta Corporate Industries",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ajanta Corporate Industries",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ajanta",
+    description: "Explore Ajanta Corporate Industries: Delivering premium products and innovative solutions globally.",
+    images: ["/og-image.jpg"],
+  },
+  themeColor: "#B91C1C",
+  robots: "index, follow",
+  viewport: "width=device-width, initial-scale=1",
 };
 
 export default function RootLayout({
