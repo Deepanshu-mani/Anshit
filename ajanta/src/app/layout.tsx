@@ -9,9 +9,11 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
   },
   metadataBase: new URL("https://www.ajantacorporateindustry.com"),
+  alternates: {
+    canonical: "https://www.ajantacorporateindustry.com",
+  },
   openGraph: {
     title: "Ajanta",
     description: "Explore Ajanta Corporate Industries: Delivering premium products and innovative solutions globally.",
@@ -19,7 +21,7 @@ export const metadata = {
     siteName: "Ajanta Corporate Industries",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Ajanta Corporate Industries",
@@ -32,7 +34,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Ajanta",
     description: "Explore Ajanta Corporate Industries: Delivering premium products and innovative solutions globally.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   themeColor: "#B91C1C",
   robots: "index, follow",
