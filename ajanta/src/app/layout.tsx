@@ -30,15 +30,8 @@ export const metadata = {
     locale: "en_US",
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Ajanta",
-    description: "Explore Ajanta Corporate Industries: Delivering premium products and innovative solutions globally.",
-    images: ["/og-image.png"],
-  },
-  themeColor: "#B91C1C",
+
   robots: "index, follow",
-  viewport: "width=device-width, initial-scale=1",
 };
 
 export default function RootLayout({
@@ -49,6 +42,26 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Ajanta Corporate Industries",
+              "url": "https://www.ajantacorporateindustry.com",
+              "logo": "https://www.ajantacorporateindustry.com/og-image.png",
+              "description": "Explore Ajanta Corporate Industries: Delivering premium products and innovative solutions globally.",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+918630980579",
+                "contactType": "Customer Service",
+                "areaServed": "Worldwide",
+                "availableLanguage": "English"
+              }
+            })
+          }}
+        />
         {children}
       </body>
     </html>
